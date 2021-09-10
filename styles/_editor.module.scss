@@ -1,0 +1,76 @@
+@use './abstracts/mixins';
+@use './abstracts/vars';
+
+.editorContainer{
+
+  flex: 5;
+  overflow-y: scroll;
+  color: vars.$triary;
+  line-height: 1em;
+  letter-spacing: .1em;
+
+
+  .lines{
+    @include mixins.setDims(36px, 100%);
+  
+    display: flex;
+    flex-direction: column;
+    overflow-x:hidden;
+  
+    //! disabling scroll
+    ::-webkit-scrollbar {
+      width: 0;  /* Remove scrollbar space */
+      background: transparent;  /* Optional: just make scrollbar invisible */
+    }
+  
+    padding: 18px 0 18px 0;
+    
+    float:left;
+
+    .number{
+      @include mixins.resetTextarea();
+      @include mixins.setDims(auto, 100%);
+
+      overflow-wrap: normal;
+
+      text-align: center;
+      line-height: 1.4em;
+
+      color: vars.$triary;
+      
+    }
+  }
+  
+  .editor{
+    @include mixins.setDims(calc(100% - 36px), 100%);
+    @include mixins.for-tablet-portrait{
+      border-radius: 0 18px 18px 0;
+    }
+  
+    float:left;
+
+    padding: 18px 0 18px 0;
+    background: vars.$secondary;
+
+
+    .textarea{
+      @include mixins.setDims(100%, 100%);
+      //! resetting styles
+      @include mixins.resetTextarea;
+
+      @include mixins.for-phone-only{
+        padding-right: 3em;
+      }
+      
+      padding-left: 1em;
+
+
+
+
+      color: vars.$white-text-color;
+      
+
+      line-height: 1.4em;
+    }
+  }
+}
