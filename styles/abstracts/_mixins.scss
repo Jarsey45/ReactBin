@@ -37,6 +37,7 @@
 
 @mixin setFlexbox{
   display:flex;
+  @content;
 }
 
 @mixin resetTextarea{

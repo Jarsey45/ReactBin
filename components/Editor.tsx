@@ -19,7 +19,7 @@ const Number: React.FC<NumberProps> = ({ index }) => {
 
 const Editor: React.FC = () => {
   const [txtContent, setText] = useState<string>("");
-  const [lines, setLines] = useState<number>(3);
+  const [lines, setLines] = useState<number>(1);
   const textArea = useRef<HTMLTextAreaElement | null>(null);
   const linesArea = useRef<HTMLDivElement | null>(null);
   const resized = useResize();
@@ -42,7 +42,6 @@ const Editor: React.FC = () => {
 
     //count lines
     const linesNum = Math.floor(current.scrollHeight / lineHeight)
-
 
 
     //setting value and lines

@@ -57,7 +57,7 @@
 
 
     .textarea{
-      @include mixins.setDims(100%, 100%);
+      @include mixins.setDims(100%, 1em);
       //! resetting styles
       @include mixins.resetTextarea;
 
@@ -70,7 +70,7 @@
 
       //background:black;
 
-      color: vars.$white-text-color;
+      color: vars.$pinkish-text-color;
       
 
       line-height: 1.4em;
@@ -79,7 +79,7 @@
 
 
   //? small setup for scrollbar
-  scrollbar-color:  vars.$primary vars.$secondary;
+  scrollbar-color:  vars.$triary vars.$secondary;
   scrollbar-width: thin;
   &::-webkit-scrollbar {
     width: 10px;

@@ -23,11 +23,18 @@
     // }
 
     .optionBar{
+      @include mixins.setFlexbox{
+        flex-direction: column;
+        align-content: center;
+      }
       @include mixins.for-phone-only{
         display:none;
       }
+
       
       flex:1;
+      
+
 
       background:vars.$primary;
     }
