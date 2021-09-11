@@ -10,6 +10,6 @@ const state: InitState = {
   binID: null
 }
 
-export const Context = React.createContext(state);
+const Context = React.createContext(state);
 
 //
