@@ -11,11 +11,11 @@
 
 
   .lines{
-    @include mixins.setDims(36px, 100%);
-  
+    @include mixins.setDims(48px, 100%);
+    //background:black; 
     display: flex;
     flex-direction: column;
-    overflow-x:hidden;
+    overflow:hidden;
   
     //! disabling scroll
     ::-webkit-scrollbar {
@@ -32,6 +32,7 @@
       @include mixins.setDims(auto, 100%);
 
       overflow-wrap: normal;
+      overflow: hidden;
 
       text-align: center;
       line-height: 1.4em;
@@ -42,10 +43,12 @@
   }
   
   .editor{
-    @include mixins.setDims(calc(100% - 36px), 100%);
+    @include mixins.setDims(calc(100% - 48px), auto);
     @include mixins.for-tablet-portrait{
       border-radius: 0 18px 18px 0;
     }
+    
+    min-height: 100%;
   
     float:left;
 
@@ -65,7 +68,7 @@
       padding-left: 1em;
 
 
-
+      //background:black;
 
       color: vars.$white-text-color;
       
@@ -73,4 +76,31 @@
       line-height: 1.4em;
     }
   }
+
+
+  //? small setup for scrollbar
+  scrollbar-color:  vars.$primary vars.$secondary;
+  scrollbar-width: thin;
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+      //background-color: vars.$secondary;
+      border-radius: 90px;
+      @include mixins.for-phone-only{
+        background-color: vars.$secondary;
+        border-radius: 0px;
+      }
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: vars.$triary;
+    border-radius: 20px 100px 100px 20px;
+    
+    @include mixins.for-phone-only{
+      border-radius: 70px 0px 0px 70px;
+    }
+  }
+
 }

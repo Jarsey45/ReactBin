@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import autosize from 'autosize';
 import useResize from '../hooks/useResize';
 import styles from '../styles/_editor.module.scss';
 
@@ -20,21 +21,27 @@ const Editor: React.FC = () => {
   const [txtContent, setText] = useState<string>("");
   const [lines, setLines] = useState<number>(3);
   const textArea = useRef<HTMLTextAreaElement | null>(null);
+  const linesArea = useRef<HTMLDivElement | null>(null);
   const resized = useResize();
 
 
 
   const handleText = () => {
     const { current } = textArea;
-    if (!current) return;
+    if (!current || !linesArea.current) return;
+
+    //get style and line height
+    const compStyles = window.getComputedStyle(current);
+    const lineHeight = parseInt(compStyles.getPropertyValue('line-height'));
 
     //change size of textarea
-    current.style.height = "auto";
-    current.style.height = (current.scrollHeight) + "px";
+    autosize(current);
+
+    //change size of linesArea depending on textarea
+    linesArea.current.style.height = (current.scrollHeight + 1.75 * lineHeight) + "px";
 
     //count lines
-    const compStyles = window.getComputedStyle(current);
-    const linesNum = Math.floor(parseInt(current.style.height) / parseInt(compStyles.getPropertyValue('line-height')))
+    const linesNum = Math.floor(current.scrollHeight / lineHeight)
 
 
 
@@ -50,7 +57,7 @@ const Editor: React.FC = () => {
 
   return (
     <div className={styles.editorContainer}>
-      <div className={styles.lines}>
+      <div className={styles.lines} ref={linesArea}>
         <Number index={lines}></Number>
       </div>
       <div className={styles.editor}>
