@@ -13,6 +13,8 @@ type Props = {
 const Layout: React.FC<Props> = ({ editor, options }) => {
   const [optionStyle, setStyle] = useState<CSSProperties>({});
 
+  
+
   return (
     <div className={styles.app}>
       <div className={styles.container} >

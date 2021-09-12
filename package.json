@@ -16,10 +16,14 @@
   "devDependencies": {
     "@types/autosize": "^4.0.0",
     "@types/react": "17.0.20",
+    "@types/uuid": "^8.3.1",
     "autosize": "^5.0.1",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.2",
+    "highlight.js": "^11.2.0",
+    "mongoose": "^6.0.5",
     "sass": "^1.39.2",
-    "typescript": "4.4.2"
+    "typescript": "4.4.2",
+    "uuid": "^8.3.2"
   }
 }

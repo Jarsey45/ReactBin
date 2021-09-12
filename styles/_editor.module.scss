@@ -36,9 +36,10 @@
 
       text-align: center;
       line-height: 1.4em;
+      font-size:1em;
 
       color: vars.$triary;
-      
+      font-family: 'Comfortaa', cursive;
     }
   }
   
@@ -72,8 +73,32 @@
 
       color: vars.$pinkish-text-color;
       
-
+      
       line-height: 1.4em;
+      font-size:1em;
+      font-family: 'Comfortaa', cursive;
+    }
+
+    pre{
+      @include mixins.setDims(100%, auto);
+      margin: 0;
+      padding-top: .1em;
+      padding-left: 1em;
+      @include mixins.for-phone-only{
+        padding-right: 3em;
+      } 
+      
+      .code{
+        font-size: 16px;
+        @include mixins.setDims(100%, 1em);
+        white-space: pre-wrap;
+        word-wrap: break-word;
+  
+        
+        color: vars.$pinkish-text-color;
+        line-height: 1.4em;
+        font-family: 'Comfortaa', cursive;
+      }
     }
 
 

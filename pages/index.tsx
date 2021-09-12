@@ -14,7 +14,7 @@ const Home: NextPage = () => {
       </Head>
       <Layout
         editor={<Editor />}
-        options={<Options></Options>}
+        options={<Options type="edit" />}
       >
       </Layout>
     </>
