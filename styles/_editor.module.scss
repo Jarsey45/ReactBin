@@ -43,7 +43,7 @@
   }
   
   .editor{
-    @include mixins.setDims(calc(100% - 48px), auto);
+    @include mixins.setDims(calc(100% - 48px), auto, relative);
     @include mixins.for-tablet-portrait{
       border-radius: 0 18px 18px 0;
     }
@@ -75,6 +75,9 @@
 
       line-height: 1.4em;
     }
+
+
+    
   }
 
 

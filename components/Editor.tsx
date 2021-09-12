@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import autosize from 'autosize';
 import useResize from '../hooks/useResize';
+
 import styles from '../styles/_editor.module.scss';
 
 type NumberProps = {

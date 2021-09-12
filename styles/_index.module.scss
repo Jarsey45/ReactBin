@@ -10,6 +10,7 @@
   .container{
     @include mixins.setDims(98%, 95%, absolute);
     @include mixins.setAbs(2%, auto, 2.5%, auto);
+    overflow: hidden;
     display: flex;
 
     border-radius: 18px 0px 0px 18px;
@@ -28,15 +29,43 @@
         align-content: center;
       }
       @include mixins.for-phone-only{
-        display:none;
+        @include mixins.setDims(50vw, 100%, absolute);
+
+        border-radius: 18px 0 0 18px;
+        right: -50vw;
+        transition: all .5s ease;
       }
 
       
       flex:1;
-      
 
 
       background:vars.$primary;
+    }
+
+    .burger{
+      @include mixins.setDims(2em, 2em, absolute);
+
+
+      top: 1.2em;
+      right: 1em;
+      border-radius: 10px;
+      cursor: pointer;
+
+      transition: all .2s ease;
+
+      &:hover{
+        background: vars.$primary;
+      }
+      
+      
+      img{
+        @include mixins.setDims(auto, 2em);
+      }
+      
+      @include mixins.for-tablet-portrait{
+        display:none;
+      }
     }
   }
 }
