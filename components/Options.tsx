@@ -7,7 +7,7 @@ const Options: React.FC = () => {
   return (
     <>
       <div className={styles.logo} >
-        <Image src={logo} alt="ReactBin logo" />
+        <Image src={logo} alt="ReactBin logo" priority={true} />
       </div>
       <div className={styles.settings}>
         <div className={styles.button}>save</div>

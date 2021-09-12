@@ -30,9 +30,9 @@ const Layout: React.FC<Props> = ({ editor, options }) => {
 
           {
             optionStyle.right === 0 ?
-              <Image src={closeIcon} alt="menu" />
+              <Image src={closeIcon} alt="menu" priority={true}/>
               :
-              <Image src={burgerIcon} alt="menu" />
+              <Image src={burgerIcon} alt="menu" priority={true}/>
           }
 
         </div>
