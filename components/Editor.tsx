@@ -1,9 +1,10 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, KeyboardEventHandler } from 'react'
 import hljs from 'highlight.js/lib/common'
 import autosize from 'autosize';
 import useResize from '../hooks/useResize';
 import { useAppContext } from '../context/state';
 
+import 'highlight.js/styles/github-dark.css';
 import styles from '../styles/_editor.module.scss';
 
 type EditorProps = {
@@ -47,7 +48,6 @@ const Editor: React.FC<EditorProps> = ({ content }) => {
     autosize(current);
 
     //change size of linesArea depending on textarea
-
     linesArea.current.style.height = content ? (current.scrollHeight + 2 * lineHeight) + "px" : (current.scrollHeight + 1.75 * lineHeight) + "px";
 
     //count lines
@@ -60,18 +60,38 @@ const Editor: React.FC<EditorProps> = ({ content }) => {
     ctx.text = current.value;
   }
 
-  //TODO highlight  
-  // useEffect(() => {
-  //   if (!codeArea.current) return;
 
-  //   hljs.configure({ ignoreUnescapedHTML: true })
-  //   hljs.highlightElement(codeArea.current);
-  //   console.log('hljs')
+  const handleTab: KeyboardEventHandler<HTMLTextAreaElement> = (e) => {
+    if (e.key == 'Tab' && e.target !== null) {
+      e.preventDefault();
 
-  // });
+      const target = e.target as HTMLTextAreaElement;
+      console.log(target);
+
+      let start = target.selectionStart;
+      let end = target.selectionEnd;
+
+      target.value = target.value.substring(0, start) + "\t" + target.value.substring(end);
+
+      target.selectionStart = target.selectionEnd = start + 1;
+      console.log('done');
+    }
+
+  }
+
+  const highlightCode = () => {
+    if (!codeArea.current) return;
+
+    hljs.configure({ ignoreUnescapedHTML: true })
+    hljs.highlightElement(codeArea.current);
+  }
+
+  //TODO highlight
+  useEffect(highlightCode);
 
   //setting right height and lines number
   useEffect(handleText);
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(handleText, [resized])
 
@@ -85,7 +105,7 @@ const Editor: React.FC<EditorProps> = ({ content }) => {
         {
           content ?
             //@ts-ignore
-            <pre ref={textArea}><code className={styles.code} ref={codeArea}>{content}</code></pre>
+            <pre ref={textArea}><code className={styles.code} ref={codeArea} >{content}</code></pre>
             :
             <textarea
               className={styles.textarea}
@@ -93,6 +113,7 @@ const Editor: React.FC<EditorProps> = ({ content }) => {
               //@ts-ignore
               ref={textArea}
               onChange={handleText}
+              onKeyDown={handleTab}
               maxLength={100000}
               autoFocus
             ></textarea>

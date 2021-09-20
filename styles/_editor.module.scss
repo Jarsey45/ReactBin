@@ -98,6 +98,11 @@
         color: vars.$pinkish-text-color;
         line-height: 1.4em;
         font-family: 'Comfortaa', cursive;
+
+        //for highlight.js
+        background: none !important;
+        display: inline !important;
+        padding: 0 !important;
       }
     }
 
@@ -132,3 +137,4 @@
   }
 
 }
+

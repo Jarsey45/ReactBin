@@ -37,6 +37,10 @@ const Options: React.FC<OptionsProps> = ({ type }) => {
     Router.push('/');
   }
 
+  const about = () => {
+    Router.push('/readme');
+  }
+
   return (
     <>
       <div className={styles.logo} >
@@ -52,7 +56,10 @@ const Options: React.FC<OptionsProps> = ({ type }) => {
               >
                 save
               </div>
-              <div className={styles.button}>share</div>
+              <div
+                className={styles.button}
+                onClick={about}
+              >about</div>
             </>
             :
             <>
@@ -68,7 +75,10 @@ const Options: React.FC<OptionsProps> = ({ type }) => {
               >
                 new
               </div>
-              <div className={styles.button}>share</div>
+              <div
+                className={styles.button}
+                onClick={about}
+              >about</div>
             </>
         }
 
