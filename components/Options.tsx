@@ -4,6 +4,7 @@ import Router from 'next/router';
 import styles from '../styles/_options.module.scss';
 import logo from '../public/logo.png';
 import { useAppContext } from '../context/state';
+import { useEffect } from 'react';
 
 type OptionsProps = {
   type: "edit" | "view"
@@ -37,9 +38,21 @@ const Options: React.FC<OptionsProps> = ({ type }) => {
     Router.push('/');
   }
 
+  const edit = () => {
+    Router.push(`/edit/${ctx.id}`);
+  }
+
   const about = () => {
     Router.push('/readme');
   }
+
+  useEffect(() => {
+    Router.prefetch("/");
+    Router.prefetch("/readme");
+
+    if (type === "view")
+      Router.prefetch(`/edit/${ctx.id}`)
+  }, [])
 
   return (
     <>
@@ -65,7 +78,7 @@ const Options: React.FC<OptionsProps> = ({ type }) => {
             <>
               <div
                 className={styles.button}
-                onClick={saveBin}
+                onClick={edit}
               >
                 edit
               </div>

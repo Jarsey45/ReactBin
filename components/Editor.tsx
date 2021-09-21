@@ -1,3 +1,4 @@
+import type { NextPage } from 'next'
 import { useState, useEffect, useRef, KeyboardEventHandler } from 'react'
 import hljs from 'highlight.js/lib/common'
 import autosize from 'autosize';
@@ -9,6 +10,7 @@ import styles from '../styles/_editor.module.scss';
 
 type EditorProps = {
   content?: string
+  editText?: string
 }
 
 type NumberProps = {
@@ -25,7 +27,7 @@ const Number: React.FC<NumberProps> = ({ index }) => {
 
 }
 
-const Editor: React.FC<EditorProps> = ({ content }) => {
+const Editor: NextPage<EditorProps> = ({ content, editText }) => {
   const ctx = useAppContext();
   const [lines, setLines] = useState<number>(1);
   const textArea = useRef<HTMLTextAreaElement | HTMLPreElement | null>(null);
@@ -34,8 +36,7 @@ const Editor: React.FC<EditorProps> = ({ content }) => {
   const resized = useResize();
 
 
-  if (content)
-    ctx.text = content;
+
 
   const handleText = () => {
     const { current } = textArea;
@@ -94,11 +95,21 @@ const Editor: React.FC<EditorProps> = ({ content }) => {
     hljs.highlightElement(codeArea.current);
   }
 
-  //TODO highlight
-  useEffect(highlightCode);
+  useEffect(() => {
+    highlightCode()
 
-  //setting right height and lines number
-  useEffect(handleText);
+    if (editText && textArea.current !== null && textArea.current.tagName !== "PRE") {
+      (textArea.current as HTMLTextAreaElement).value = editText;
+      console.log(editText)
+    }
+
+
+    //setting right height and lines number
+    handleText()
+
+
+
+  });
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(handleText, [resized])
@@ -124,7 +135,7 @@ const Editor: React.FC<EditorProps> = ({ content }) => {
               onKeyDown={handleTab}
               maxLength={100000}
               autoFocus
-            ></textarea>
+            />
         }
       </div>
     </div>

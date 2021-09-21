@@ -7,6 +7,7 @@ import Editor from '../components/Editor';
 import Options from '../components/Options';
 
 const Home: NextPage = () => {
+
   return (
     <>
       <Head>
@@ -15,6 +16,7 @@ const Home: NextPage = () => {
       <Layout
         editor={<Editor />}
         options={<Options type="edit" />}
+        type="edit"
       >
       </Layout>
     </>

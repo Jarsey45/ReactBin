@@ -3,12 +3,13 @@ import { createContext, useContext } from "react";
 type ContextType = {
   text: string
   lang: string
+  id: string
 }
 
 const AppContext = createContext({} as ContextType);
 
 export function AppWrapper({ children }: any) {
-  const State: ContextType = { text: "", lang: "txt" };
+  const State: ContextType = { text: "", lang: "txt", id: "" };
 
   return (
     <AppContext.Provider value={State} >
