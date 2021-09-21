@@ -69,7 +69,6 @@ const Editor: NextPage<EditorProps> = ({ content, editText }) => {
       e.preventDefault();
 
       const target = e.target as HTMLTextAreaElement;
-      console.log(target);
 
       let start = target.selectionStart;
       let end = target.selectionEnd;
@@ -77,7 +76,6 @@ const Editor: NextPage<EditorProps> = ({ content, editText }) => {
       target.value = target.value.substring(0, start) + "\t" + target.value.substring(end);
 
       target.selectionStart = target.selectionEnd = start + 1;
-      console.log('done');
     }
 
   }
@@ -95,20 +93,18 @@ const Editor: NextPage<EditorProps> = ({ content, editText }) => {
     hljs.highlightElement(codeArea.current);
   }
 
+  //editText was set
+  useEffect(() => {
+    if (editText && textArea.current !== null && textArea.current.tagName !== "PRE")
+      (textArea.current as HTMLTextAreaElement).value = editText;
+  }, [editText])
+
+
+  //component mount and update
   useEffect(() => {
     highlightCode()
-
-    if (editText && textArea.current !== null && textArea.current.tagName !== "PRE") {
-      (textArea.current as HTMLTextAreaElement).value = editText;
-      console.log(editText)
-    }
-
-
     //setting right height and lines number
     handleText()
-
-
-
   });
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
