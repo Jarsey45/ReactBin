@@ -67,5 +67,40 @@
         display:none;
       }
     }
+
+    .copy{
+      @include mixins.setDims(3em, 3em, absolute);
+
+      box-sizing: content-box;
+      bottom: 2.4em;
+      right: 20%;
+      border-radius: 5px;
+      border: 2px solid vars.$primary;
+      cursor: pointer;
+
+      transition: all .2s ease;
+
+      background: vars.$secondary;
+
+      &:hover{
+        background: vars.$primary;
+      }
+      
+      
+      img{
+        @include mixins.setDims(auto, 3em);
+      }
+      
+      @include mixins.for-phone-only{
+        @include mixins.setDims(2em, 2em, absolute);
+        bottom: 2.4em;
+        right: 1em;
+        border: none;
+
+        img{
+          @include mixins.setDims(auto, 2em);
+        }
+      }
+    }
   }
 }

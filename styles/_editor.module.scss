@@ -39,7 +39,7 @@
       font-size:1em;
 
       color: vars.$triary;
-      font-family: 'Comfortaa', cursive;
+      font-family: 'Comfortaa', 'Nunito', sans-serif;
     }
   }
   
@@ -76,7 +76,7 @@
       
       line-height: 1.4em;
       font-size:1em;
-      font-family: 'Comfortaa', cursive;
+      font-family: 'Comfortaa', 'Nunito', sans-serif;
     }
 
     pre{
@@ -97,7 +97,7 @@
         
         color: vars.$pinkish-text-color;
         line-height: 1.4em;
-        font-family: 'Comfortaa', cursive;
+        font-family: 'Comfortaa', 'Nunito', sans-serif;
 
         //for highlight.js
         background: none !important;

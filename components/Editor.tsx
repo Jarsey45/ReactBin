@@ -34,6 +34,8 @@ const Editor: React.FC<EditorProps> = ({ content }) => {
   const resized = useResize();
 
 
+  if (content)
+    ctx.text = content;
 
   const handleText = () => {
     const { current } = textArea;
@@ -79,6 +81,12 @@ const Editor: React.FC<EditorProps> = ({ content }) => {
 
   }
 
+  const handleFocus = () => {
+    if (textArea.current === null) return;
+
+    textArea.current.focus();
+  }
+
   const highlightCode = () => {
     if (!codeArea.current) return;
 
@@ -97,7 +105,7 @@ const Editor: React.FC<EditorProps> = ({ content }) => {
 
 
   return (
-    <div className={styles.editorContainer}>
+    <div className={styles.editorContainer} onClick={handleFocus}>
       <div className={styles.lines} ref={linesArea}>
         <Number index={lines}></Number>
       </div>
