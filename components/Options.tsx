@@ -52,7 +52,7 @@ const Options: React.FC<OptionsProps> = ({ type }) => {
 
     if (type === "view")
       Router.prefetch(`/edit/${ctx.id}`)
-  }, [])
+  }, [ctx.id, type])
 
   return (
     <>

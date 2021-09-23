@@ -37,10 +37,10 @@ const Editor: NextPage<EditorProps> = ({ content, editText }) => {
 
 
 
-
   const handleText = () => {
     const { current } = textArea;
     if (!current || !linesArea.current) return;
+    if (current.tagName === "PRE") return;
 
 
     //get style and line height
@@ -102,6 +102,7 @@ const Editor: NextPage<EditorProps> = ({ content, editText }) => {
 
   //component mount and update
   useEffect(() => {
+    //selp-explenatory
     highlightCode()
     //setting right height and lines number
     handleText()
@@ -118,14 +119,12 @@ const Editor: NextPage<EditorProps> = ({ content, editText }) => {
       </div>
       <div className={styles.editor}>
         {
-          content ?
-            //@ts-ignore
+          content ? //@ts-ignore
             <pre ref={textArea}><code className={styles.code} ref={codeArea} >{content}</code></pre>
             :
             <textarea
               className={styles.textarea}
-              spellCheck={false}
-              //@ts-ignore
+              spellCheck={false} //@ts-ignore
               ref={textArea}
               onChange={handleText}
               onKeyDown={handleTab}

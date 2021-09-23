@@ -9,6 +9,7 @@ type ContextType = {
 const AppContext = createContext({} as ContextType);
 
 export function AppWrapper({ children }: any) {
+  // const [setText]
   const State: ContextType = { text: "", lang: "txt", id: "" };
 
   return (
