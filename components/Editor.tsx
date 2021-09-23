@@ -40,7 +40,6 @@ const Editor: NextPage<EditorProps> = ({ content, editText }) => {
   const handleText = () => {
     const { current } = textArea;
     if (!current || !linesArea.current) return;
-    if (current.tagName === "PRE") return;
 
 
     //get style and line height
@@ -59,7 +58,8 @@ const Editor: NextPage<EditorProps> = ({ content, editText }) => {
 
     //setting value and lines
     setLines(linesNum);
-    //@ts-ignore
+
+    if (current.tagName === "PRE") return;  //@ts-ignore
     ctx.text = current.value;
   }
 
@@ -88,6 +88,7 @@ const Editor: NextPage<EditorProps> = ({ content, editText }) => {
 
   const highlightCode = () => {
     if (!codeArea.current) return;
+    console.log(codeArea.current.innerHTML);
 
     hljs.configure({ ignoreUnescapedHTML: true })
     hljs.highlightElement(codeArea.current);
@@ -102,7 +103,6 @@ const Editor: NextPage<EditorProps> = ({ content, editText }) => {
 
   //component mount and update
   useEffect(() => {
-    //selp-explenatory
     highlightCode()
     //setting right height and lines number
     handleText()
