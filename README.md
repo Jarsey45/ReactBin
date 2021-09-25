@@ -30,3 +30,6 @@ App is inspired by [hastebin](hastebin.com) and [pastebin](https://pastebin.com)
 #### [uuid](https://github.com/uuidjs/uuid#readme)
 #### [Next.js](https://nextjs.org)
 #### [Typescript](typescriptlang.org)
+
+---
+Bartłomiej Kowalczyk 2021
