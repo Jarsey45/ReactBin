@@ -35,16 +35,16 @@ const Layout: NextPage<Props> = ({ editor, options, type }) => {
 
           {
             optionStyle.right === 0 ?
-              <Image src={closeIcon} alt="menu" priority={true} />
+              <Image src={closeIcon} layout="fill" alt="menu" priority={true} />
               :
-              <Image src={burgerIcon} alt="menu" priority={true} />
+              <Image src={burgerIcon} layout="fill" alt="menu" priority={true} />
           }
 
         </div>
         {
           type === "view" ?
             <div className={styles.copy} onClick={() => copyTextToClipboard(ctx.text)}>
-              <Image src={copyIcon} alt="copy" priority={true} />
+              <Image src={copyIcon} layout="fill" alt="copy" priority={true} />
             </div>
             :
             null
