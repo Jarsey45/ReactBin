@@ -32,4 +32,4 @@ App is inspired by [hastebin](hastebin.com) and [pastebin](https://pastebin.com)
 #### [Typescript](typescriptlang.org)
 
 ---
-Bartłomiej Kowalczyk 2021
+### *Bartłomiej Kowalczyk 2021*
