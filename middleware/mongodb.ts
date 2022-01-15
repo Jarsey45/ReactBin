@@ -9,7 +9,8 @@ const connectDB = (handler: any) => async (req: any, res: any) => {
 
   //else use new connection
   await mongoose.connect(<string>process.env.MONGO_URL, {
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    keepAlive:true
   } as mongoose.ConnectOptions);
 
 
