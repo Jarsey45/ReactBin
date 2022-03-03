@@ -26,6 +26,10 @@ const Bin: NextPage<BinProps> = ({ text, lang, id }) => {
     <>
       <Head>
         <title>ReactBin</title>
+        <meta property='og:url' content="react-bin.vercel.app"/>
+        <meta property='og:type' content='website' />
+        <meta property='og:description' content='Your friends sends you a code snippet 8)'/>
+        <meta property='og:image' content={'../public/logo.png'}/>
       </Head>
       <Layout
         editor={<Editor content={text} />}
