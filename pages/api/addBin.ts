@@ -52,13 +52,12 @@ async function handler(
     })
 
 
-    bin.save((err: any) => {
-      if (err) console.log(err);
-    });
+    const saved = await bin.save();
 
+    console.log(saved);
 
-    console.log(bin);
-    res.status(200).json({ id: bin.get("_id") })
+    if(saved)
+      res.status(200).json({ id: bin.get("_id") })
   } catch (err: any) { res.status(500).send(err.message) }
 }
 

@@ -88,7 +88,7 @@ const Editor: NextPage<EditorProps> = ({ content, editText }) => {
 
   const highlightCode = () => {
     if (!codeArea.current) return;
-    console.log(codeArea.current.innerHTML);
+    // console.log(codeArea.current.innerHTML);
 
     hljs.configure({ ignoreUnescapedHTML: true })
     hljs.highlightElement(codeArea.current);
