@@ -1,16 +1,18 @@
 import { createContext, useContext } from "react";
+import { Reaction } from "../types/Bin";
 
 type ContextType = {
   text: string
   lang: string
-  id: string
+  id: string | null
+  reactions: Reaction[]
 }
 
 const AppContext = createContext({} as ContextType);
 
 export function AppWrapper({ children }: any) {
-  // const [setText]
-  const State: ContextType = { text: "", lang: "txt", id: "" };
+  //TODO: this should be useState 
+  const State: ContextType = { text: "", lang: "txt", id: "", reactions: [] };
 
   return (
     <AppContext.Provider value={State} >

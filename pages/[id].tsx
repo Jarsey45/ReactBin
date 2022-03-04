@@ -6,30 +6,33 @@ import Editor from '../components/Editor';
 import Options from '../components/Options';
 
 import BinModel from '../models/bin';
+import type { Reaction } from '../types/Bin';
 import connectDBForSSR from '../middleware/ssr_mongodb';
 import { useAppContext } from '../context/state';
 
 type BinProps = {
   text: string;
   lang: string;
-  id: string
+  id: string | null;
+  reactions: Reaction[];
 }
 
-const Bin: NextPage<BinProps> = ({ text, lang, id }) => {
+const Bin: NextPage<BinProps> = ({ text, lang, id, reactions }) => {
   const ctx = useAppContext();
 
   ctx.id = id;
   ctx.lang = lang;
   ctx.text = text;
+  ctx.reactions = reactions;
 
   return (
     <>
       <Head>
         <title>ReactBin</title>
-        <meta property='og:url' content="react-bin.vercel.app"/>
+        <meta property='og:url' content="react-bin.vercel.app" />
         <meta property='og:type' content='website' />
-        <meta property='og:description' content='Your friends sends you a code snippet 8)'/>
-        <meta property='og:image' content={'../public/logo.png'}/>
+        <meta property='og:description' content='Your friends sends you a code snippet 8)' />
+        <meta property='og:image' content={'../public/logo.png'} />
       </Head>
       <Layout
         editor={<Editor content={text} />}
@@ -54,15 +57,20 @@ export async function getServerSideProps({ params }: any) {
   if (!found) return {
     props: {
       text: "No bin with id = " + id,
-      lang: "txt"
+      lang: "txt",
+      id: null,
     } as BinProps
   }
+
+  //shitty parse from mongoose object
+  const reactions = JSON.parse(JSON.stringify(found.get('reactions'))) as Reaction[];
 
   return {
     props: {
       text: found.get("text"),
       lang: found.get("lang"),
-      id
+      id,
+      reactions
     } as BinProps
   }
 }

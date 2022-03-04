@@ -1,0 +1,71 @@
+@use 'abstracts/mixins';
+@use 'abstracts/vars';
+
+
+  .container{
+
+    @include mixins.setFlexbox{
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: .2em;
+    }
+
+    @include mixins.setDims(calc(100% - 1em),auto, absolute);
+
+    bottom: 2em;
+    padding: .5em;
+    border-radius: 20px;
+    background: vars.$secondary;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+
+    .option{
+      @include mixins.setFlexbox{
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        gap: 2px;
+      }
+
+
+      cursor: pointer;
+      flex:1;
+      padding: .3em;
+      border-radius: 2em;
+      font-size: .8em;
+
+      
+
+      &[data-type="like"]{
+        background: vars.$like-color;
+      }
+
+      &[data-type="love"]{
+        background: vars.$love-color;
+      }
+
+      &[data-type="dislike"]{
+        background: vars.$dislike-color;
+      }
+
+      &[data-type="trash"]{
+        background: vars.$trash-color; 
+      }
+
+      .icon{
+        @include mixins.setDims(1.2vw,1.2vw);
+        min-width: 1em;
+        min-height: 1em;
+
+      }
+
+      &:hover{
+        opacity: .7;
+        transition: .2s ease-in-out;
+      }
+    }
+  }
+
+

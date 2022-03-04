@@ -2,6 +2,7 @@ import Bin from '../../models/bin';
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { v4 as uuidv4 } from 'uuid';
 import connectDB from '../../middleware/mongodb';
+import type { Reaction, BinType } from '../../types/Bin';
 
 type Data = {
   id: string
@@ -42,14 +43,14 @@ async function handler(
         name: "trash",
         number: 0
       }
-    ];
+    ] as Reaction[];
 
     const bin = new Bin({
       _id: uuidv4(),
       text: reqData.text as string,
       lang: reqData.lang as string,
       reactions
-    })
+    } as BinType)
 
 
     const saved = await bin.save();

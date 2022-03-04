@@ -5,6 +5,7 @@ import styles from '../styles/_options.module.scss';
 import logo from '../public/logo.png';
 import { useAppContext } from '../context/state';
 import { useEffect } from 'react';
+import Reactions from './Reactions';
 
 type OptionsProps = {
   type: "edit" | "view"
@@ -96,7 +97,10 @@ const Options: React.FC<OptionsProps> = ({ type }) => {
         }
 
       </div>
-      <div className={styles.reactions} ></div>
+      <div className={styles.reactions} >
+      {type === 'edit' ? null : <Reactions />}
+      </div>
+
     </>
   )
 }

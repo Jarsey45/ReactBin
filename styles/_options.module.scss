@@ -44,7 +44,10 @@
 }
 
 .reactions{
+  position: relative;
   flex:3;
+  padding: .5em;
   text-align: center;
-  color:white;
+  color:vars.$white-text-color;
+
 }
