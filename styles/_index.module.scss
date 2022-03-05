@@ -1,6 +1,8 @@
 @use 'abstracts/mixins';
 @use 'abstracts/vars';
 
+$optionBarWidth: 230px;
+
 
 .app{
   @include mixins.setDims(100vw, 100vh);
@@ -39,8 +41,7 @@
 
       
       flex:1;
-
-
+      min-width: $optionBarWidth;
       background:vars.$primary;
     }
 
@@ -76,7 +77,7 @@
       z-index: 0;
       box-sizing: content-box;
       bottom: 2.4em;
-      right: 20%;
+      right: calc($optionBarWidth + 5vw);
       border-radius: 5px;
       border: 2px solid vars.$primary;
       cursor: pointer;

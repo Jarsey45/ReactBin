@@ -23,7 +23,6 @@ const Bin: NextPage<BinProps> = ({ text, lang, id, reactions }) => {
   ctx.id = id;
   ctx.lang = lang;
   ctx.text = text;
-  ctx.reactions = reactions;
 
   return (
     <>
@@ -36,7 +35,7 @@ const Bin: NextPage<BinProps> = ({ text, lang, id, reactions }) => {
       </Head>
       <Layout
         editor={<Editor content={text} />}
-        options={<Options type="view" />}
+        options={<Options type="view" reactions={reactions} />}
         type="view"
       >
       </Layout>

@@ -34,8 +34,8 @@
       flex:1;
       padding: .3em;
       border-radius: 2em;
-      font-size: .8em;
-
+      font-size: .6em;
+      transition: .4s ease-in-out;
       
 
       &[data-type="like"]{
@@ -56,16 +56,35 @@
 
       .icon{
         @include mixins.setDims(1.2vw,1.2vw);
-        min-width: 1em;
-        min-height: 1em;
+        min-width: 1rem;
+        min-height: 1rem;
 
+      }
+
+      .count{
+        font-size: max(.7vmax, 1em);
       }
 
       &:hover{
         opacity: .7;
-        transition: .2s ease-in-out;
+        
+        
+        &[data-type="trash"]{
+          opacity: 1;
+          background: vars.$primary;
+        }
       }
+
+      
+      
     }
+
+    .notSelected{
+      opacity: .2;
+      transition: .4s ease-in-out;
+    }
+
+    transition: .4s ease-in-out;
   }
 
 

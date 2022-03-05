@@ -7,11 +7,14 @@ import { useAppContext } from '../context/state';
 import { useEffect } from 'react';
 import Reactions from './Reactions';
 
+import { Reaction } from '../types/Bin';
+
 type OptionsProps = {
   type: "edit" | "view"
+  reactions: Reaction[]
 }
 
-const Options: React.FC<OptionsProps> = ({ type }) => {
+const Options: React.FC<OptionsProps> = ({ type, reactions }) => {
   const ctx = useAppContext();
 
   const saveBin = async () => {
@@ -98,7 +101,7 @@ const Options: React.FC<OptionsProps> = ({ type }) => {
 
       </div>
       <div className={styles.reactions} >
-      {type === 'edit' ? null : <Reactions />}
+        {type === 'edit' ? null : <Reactions data={reactions} />}
       </div>
 
     </>

@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-// import Reaction from './reaction';
 
 const Schema = mongoose.Schema;
 
