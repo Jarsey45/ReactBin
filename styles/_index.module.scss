@@ -34,7 +34,7 @@ $optionBarWidth: 230px;
         @include mixins.setDims(50vw, 100%, absolute);
 
         border-radius: 18px 0 0 18px;
-        right: -50vw;
+        right: min(-50vw, 0px - $optionBarWidth);
         transition: all .5s ease;
         z-index: 1;
       }

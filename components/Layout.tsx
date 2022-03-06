@@ -30,7 +30,7 @@ const Layout: NextPage<Props> = ({ editor, options, type }) => {
             if (optionStyle.right !== 0)
               setStyle({ right: 0 })
             else
-              setStyle({ right: '-50vw' })
+              setStyle({ right: 'min(-50vw, -230px)' })
           }}>
 
           {
