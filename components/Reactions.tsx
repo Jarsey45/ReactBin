@@ -45,6 +45,26 @@ const Reactions: React.FC<ReactionsProps> = ({ data }) => {
   const handleAddReaction = async (action: ('increment' | 'decrement'), _id: string,) => {
     const data = { _id, action };
 
+    //set this before to not bombard it with requests
+    setReactions(prev => {
+      prev.forEach((el) => el.chosen = false);
+      const reactionIndex = prev.findIndex(obj => obj._id === _id);
+      prev[reactionIndex].chosen = !prev[reactionIndex].chosen;
+
+      return [...prev];
+    });
+
+    //set isChosen to true if not 'decrement'
+    if (action === 'increment') {
+      setChosen({ _id, status: true });
+      //set localStorage
+      localStorage.setItem(_id, 'true');
+    } else {
+      //remove localStorage
+      localStorage.removeItem(_id);
+    }
+
+
 
     try {
       const response = await fetch('/api/addReactions', {
@@ -60,24 +80,10 @@ const Reactions: React.FC<ReactionsProps> = ({ data }) => {
       setReactions(prev => {
         prev.forEach((el) => el.chosen = false);
         const reactionIndex = prev.findIndex(obj => obj._id === _id);
-        // console.log('przed: ', prev[reactionIndex]);
         prev[reactionIndex].number = newCount; // dangerous
-        prev[reactionIndex].chosen = !prev[reactionIndex].chosen;
-        // console.log('po: ', prev[reactionIndex]);
 
         return [...prev];
       });
-
-
-      //set isChosen to true if not 'decrement'
-      if (action === 'increment') {
-        setChosen({ _id, status: true });
-        //set localStorage
-        localStorage.setItem(_id, 'true');
-      } else {
-        //remove localStorage
-        localStorage.removeItem(_id);
-      }
 
     } catch (err) {
       console.error(err);
