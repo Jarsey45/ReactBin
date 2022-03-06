@@ -11,7 +11,7 @@ import { Reaction } from '../types/Bin';
 
 type OptionsProps = {
   type: "edit" | "view"
-  reactions: Reaction[]
+  reactions?: Reaction[]
 }
 
 const Options: React.FC<OptionsProps> = ({ type, reactions }) => {
@@ -101,7 +101,7 @@ const Options: React.FC<OptionsProps> = ({ type, reactions }) => {
 
       </div>
       <div className={styles.reactions} >
-        {type === 'edit' ? null : <Reactions data={reactions} />}
+        {type !== 'edit' && reactions ? <Reactions data={reactions} /> : null}
       </div>
 
     </>
