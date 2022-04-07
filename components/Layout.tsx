@@ -52,9 +52,8 @@ const Layout: NextPage<Props> = ({ editor, options, type }) => {
               onClick={() => {
 
                 addToast({
-                  id: uuidv4(),
                   type: "info",
-                  message: "bin coppied",
+                  message: "Bin copied to clipboard",
                   deleteToast: () => {removeToast('aa')} //it is not needed, but i want it xD
                 });
 
@@ -73,7 +72,7 @@ const Layout: NextPage<Props> = ({ editor, options, type }) => {
                 key={toast.id}
                 id={toast.id}
                 message={toast.message}
-                deleteToast={() => removeToast(toast.id)}
+                deleteToast={() => removeToast(toast.id as string)} // there is no way it is something else 
                 type={toast.type}
               />
             })

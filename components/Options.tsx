@@ -15,7 +15,6 @@ type OptionsProps = {
   reactions?: Reaction[]
 }
 
-console.log('hej')
 
 const Options: React.FC<OptionsProps> = ({ type, reactions }) => {
   const ctx = useAppContext().State;
@@ -23,7 +22,6 @@ const Options: React.FC<OptionsProps> = ({ type, reactions }) => {
 
   const saveBin = async () => {
     addToast({
-      id: uuidv4(),
       type: "info",
       message: "Creating new bin...",
       deleteToast: () => { removeToast('aa') } //it is not needed, but i want it xD
@@ -37,23 +35,48 @@ const Options: React.FC<OptionsProps> = ({ type, reactions }) => {
 
       const json = await response.json();
 
+      if(json.error) throw json.error;
+
       if (json.id)
         setTimeout(() => {
           Router.push(`/${json.id}`);
+
+          addToast({
+            type: "success",
+            message: "Bin created successfully",
+            deleteToast: () => {removeToast('aa')} //it is not needed, but i want it xD
+          });
+
         }, 250)
 
     } catch (err) {
-      console.error(err);
+
+      addToast({
+        type: "warning",
+        message: `${err}`,
+        deleteToast: () => {removeToast('aa')} //it is not needed, but i want it xD
+      });
     }
   }
 
   const newBin = () => {
     ctx.text = "";
     Router.push('/');
+
+    addToast({
+      type: "info",
+      message: "You are now in edit mode",
+      deleteToast: () => {removeToast('aa')} //it is not needed, but i want it xD
+    });
   }
 
   const edit = () => {
     Router.push(`/edit/${ctx.id}`);
+    addToast({
+      type: "info",
+      message: "You are now in edit mode",
+      deleteToast: () => {removeToast('aa')} //it is not needed, but i want it xD
+    });
   }
 
   const about = () => {

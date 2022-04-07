@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import type {NextPage} from 'next';
+import { v4 as uuidv4 } from 'uuid';
 import Image from 'next/image';
 
 import { Reaction } from '../types/Bin';
@@ -10,6 +11,7 @@ import like from '../public/reactions/like.png';
 import love from '../public/reactions/love.png';
 import dislike from '../public/reactions/dislike.png';
 import trash from '../public/reactions/trash.png';
+import { useAppContext } from '../context/state';
 
 type ReactionsProps = {
   data: Reaction[];
@@ -22,6 +24,7 @@ type Chosen = {
 
 const Reactions: NextPage<ReactionsProps> = ({ data }) => {
   const [reactions, setReactions] = useState(data);
+  const { addToast, removeToast } = useAppContext();
   const [chosen, setChosen] = useState<Chosen>({ status: false, _id: '' });
 
 
@@ -57,9 +60,24 @@ const Reactions: NextPage<ReactionsProps> = ({ data }) => {
       setChosen({ _id, status: true });
       //set localStorage
       localStorage.setItem(_id, 'true');
+
+      //add toast
+      addToast({
+        type: "success",
+        message: "Reaction added",
+        deleteToast: () => {removeToast('aa')} //it is not needed, but i want it xD
+      });
+
     } else {
       //remove localStorage
       localStorage.removeItem(_id);
+
+      //add toast
+      addToast({
+        type: "success",
+        message: "Reaction added",
+        deleteToast: () => {removeToast('aa')} //it is not needed, but i want it xD
+      });
     }
 
 
@@ -98,7 +116,7 @@ const Reactions: NextPage<ReactionsProps> = ({ data }) => {
       await handleAddReaction('decrement', chosen._id);
     await handleAddReaction('increment', _id);
 
-
+    
   }
 
   const options = reactions.map((emote, index) => {

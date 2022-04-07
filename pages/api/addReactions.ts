@@ -33,6 +33,8 @@ async function handler(
     return;
   }
 
+  try{
+
   //@ts-ignore; I'm ignoring fact that body is a string always 
   const { _id, action } = JSON.parse(req.body) as BodyData;
   if (!(_id && action)) {
@@ -70,6 +72,10 @@ async function handler(
   const newCount = foundAndIncremented.get('reactions').find((el: Reaction) => el._id.toString() === _id).number;
 
   res.status(200).json({ isSaved: (foundAndIncremented ? true : false), action, newCount });
+
+  }catch(err){
+    res.status(500).json({error: err} as Error);
+  }
 
 }
 

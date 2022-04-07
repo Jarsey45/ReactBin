@@ -59,7 +59,7 @@ async function handler(
 
     if(saved)
       res.status(200).json({ id: bin.get("_id") })
-  } catch (err: any) { res.status(500).send(err.message) }
+  } catch (err: any) { res.status(500).send({error: err} as Error) }
 }
 
 export default connectDB(handler)

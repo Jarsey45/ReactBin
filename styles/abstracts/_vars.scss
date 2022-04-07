@@ -14,5 +14,8 @@ $trash-color: #1E2019;
 //TOASTS
 $info: #fc0;
 $info-loader: rgb(240, 102, 22);
-$warning: #c30;
-$warning-loader: rgb(231, 182, 21);
+$warning: #f46531;
+$warning-loader: rgb(243, 160, 64);
+$warning-close: $pinkish-text-color;
+$success: #46d76f;
+$success-loader: hsl(155, 80%, 40%);

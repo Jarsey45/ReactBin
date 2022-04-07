@@ -111,12 +111,19 @@ $optionBarWidth: 230px;
     .toasts {
       @include mixins.setFlexbox {
         @include mixins.setDims(40vw, 80vh, absolute);
-        bottom:1em;
+        bottom: 1em;
         left: 20vw;
-        gap:.2em;
+        gap: .2em;
 
         flex-direction: column-reverse;
         align-items: center;
+
+        pointer-events: none;
+
+        @include mixins.for-phone-only {
+          @include mixins.setDims(50vw, 80vh, absolute);
+          left:25%;
+        }
       }
 
       transition: all .2s ease;

@@ -7,9 +7,9 @@ import { useEffect, useState } from 'react';
 import useTimer from '../../hooks/useTimer';
 
 export type ToastProps = {
-  id: string;
+  id?: string;
   message: string;
-  type: "warning" | "info";
+  type: "warning" | "info" | "success";
   deleteToast: () => void;
 }
 
@@ -17,11 +17,15 @@ enum TOAST_CONFIG {
   TOAST_DURATION = 5100 //miliseconds
 }
 
-const Toast: NextPage<ToastProps> = ({ id, message, type, deleteToast }) => {
+const Toast: NextPage<ToastProps> = ({ message, type, deleteToast }) => {
   const timer = useTimer(); //TODO: naprawic ten timer błedy
 
-  if (timer >= TOAST_CONFIG.TOAST_DURATION)
-    deleteToast();
+  useEffect(() => {
+
+    if (timer >= TOAST_CONFIG.TOAST_DURATION)
+      deleteToast();
+
+  }, [timer, deleteToast])
 
 
   return (

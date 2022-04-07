@@ -2,17 +2,25 @@
 @use '../abstracts/vars';
 
 .toast {
-  width: 50%;
-  position: relative;
+  @include mixins.setDims(80%, auto, relative);
+  max-width: 25vw;
+
+  z-index: 10;
+  pointer-events: all;
 
   border-radius: .5em;
   overflow: hidden;
 
   text-align: center;
-  padding: 1em 1em;
+  padding: 1em 2em;
 
   animation: show 300ms forwards, hide 300ms 4900ms forwards;
   transition: all .2s ease;
+
+  @include mixins.for-phone-only {
+    @include mixins.setDims(50vw, auto, relative);
+    max-width: none;
+  }
 
   &[data-type="info"] {
     background: vars.$info;
@@ -27,6 +35,26 @@
 
     .loadBar {
       background: vars.$warning-loader;
+    }
+
+    .close {
+      img {
+        fill: #fff;
+      }
+    }
+  }
+
+  &[data-type="success"] {
+    background: vars.$success;
+
+    .loadBar {
+      background: vars.$success-loader;
+    }
+
+    .close {
+      img {
+        fill: #fff;
+      }
     }
   }
 
@@ -47,7 +75,7 @@
     bottom: 0;
     border-radius: 1em;
 
-    animation: loading 5s forwards;
+    animation: loading 5s linear forwards;
   }
 
 }

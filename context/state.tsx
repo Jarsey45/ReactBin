@@ -1,4 +1,5 @@
 import { createContext, useCallback, useContext, useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
 import { ToastProps } from "../components/toasts/Toast";
 import { Reaction } from "../types/Bin";
 
@@ -25,6 +26,7 @@ export function AppWrapper({ children }: any) {
   const [Toasts, setToasts] = useState<ToastProps[]>([]);
 
   const addToast = useCallback((newToast: ToastProps) => {
+    newToast.id = uuidv4();
     setToasts([...Toasts, newToast]);
   }, [Toasts, setToasts])
 
