@@ -24,8 +24,7 @@ const Home: NextPage = () => {
         editor={<Editor />}
         options={<Options type="edit" />}
         type="edit"
-      >
-      </Layout>
+      />
     </>
   )
 }

@@ -37,8 +37,8 @@ const Bin: NextPage<BinProps> = ({ text, lang, id, reactions }) => {
         editor={<Editor content={text} />}
         options={<Options type="view" reactions={reactions} />}
         type="view"
-      >
-      </Layout>
+      />
+      
     </>
   )
 }

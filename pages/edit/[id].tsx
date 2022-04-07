@@ -31,8 +31,7 @@ const BinEdit: NextPage<BinEditProps> = ({ text, lang, id }) => {
         editor={<Editor editText={text} />}
         options={<Options type="edit" />}
         type="edit"
-      >
-      </Layout>
+      />
     </>
   )
 }
