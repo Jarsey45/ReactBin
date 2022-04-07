@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react';
+import type {NextPage} from 'next';
 import Image from 'next/image';
 
-import { useAppContext } from '../context/state';
 import { Reaction } from '../types/Bin';
-import connectDBForSSR from '../middleware/ssr_mongodb';
-import BinModel from '../models/bin';
 
 
 import styles from '../styles/_reactions.module.scss';
@@ -22,7 +20,7 @@ type Chosen = {
   _id: string;
 }
 
-const Reactions: React.FC<ReactionsProps> = ({ data }) => {
+const Reactions: NextPage<ReactionsProps> = ({ data }) => {
   const [reactions, setReactions] = useState(data);
   const [chosen, setChosen] = useState<Chosen>({ status: false, _id: '' });
 
@@ -117,7 +115,7 @@ const Reactions: React.FC<ReactionsProps> = ({ data }) => {
     return (
       <div className={`${styles.option} ${(chosen.status && !selected ? styles.notSelected : '')}`} data-type={emote.name} data-id={emote._id} data-selected={selected} key={index} onClick={handleClick}>
         <div className={styles.icon}>
-          <Image src={src} alt={emote.name} />
+          <Image src={src} alt={emote.name} priority={true}/>
         </div>
         <div className={styles.count} > {emote.number} </div>
       </div>

@@ -4,12 +4,12 @@
 $optionBarWidth: 230px;
 
 
-.app{
+.app {
   @include mixins.setDims(100vw, 100vh);
   background: vars.$triary;
-  
 
-  .container{
+
+  .container {
     @include mixins.setDims(98%, 95%, absolute);
     @include mixins.setAbs(2%, auto, 2.5%, auto);
     overflow: hidden;
@@ -22,15 +22,16 @@ $optionBarWidth: 230px;
     // .textEditor{
     //   // @include mixins.setDims(auto, calc(100% - 36px));
 
-      
+
     // }
 
-    .optionBar{
-      @include mixins.setFlexbox{
+    .optionBar {
+      @include mixins.setFlexbox {
         flex-direction: column;
         align-content: center;
       }
-      @include mixins.for-phone-only{
+
+      @include mixins.for-phone-only {
         @include mixins.setDims(50vw, 100%, absolute);
 
         border-radius: 18px 0 0 18px;
@@ -39,13 +40,13 @@ $optionBarWidth: 230px;
         z-index: 1;
       }
 
-      
+
       flex:1;
       min-width: $optionBarWidth;
       background:vars.$primary;
     }
 
-    .burger{
+    .burger {
       @include mixins.setDims(2em, 2em, absolute);
 
 
@@ -57,21 +58,21 @@ $optionBarWidth: 230px;
 
       transition: all .2s ease;
 
-      &:hover{
+      &:hover {
         background: vars.$primary;
       }
-      
-      
-      img{
+
+
+      img {
         @include mixins.setDims(auto, 2em);
       }
-      
-      @include mixins.for-tablet-portrait{
-        display:none;
+
+      @include mixins.for-tablet-portrait {
+        display: none;
       }
     }
 
-    .copy{
+    .copy {
       @include mixins.setDims(3em, 3em, absolute);
 
       z-index: 0;
@@ -86,25 +87,39 @@ $optionBarWidth: 230px;
 
       background: vars.$secondary;
 
-      &:hover{
+      &:hover {
         background: vars.$primary;
       }
-      
-      
-      img{
+
+
+      img {
         @include mixins.setDims(auto, 3em);
       }
-      
-      @include mixins.for-phone-only{
+
+      @include mixins.for-phone-only {
         @include mixins.setDims(2em, 2em, absolute);
         bottom: 2.4em;
         right: 1em;
         border: none;
 
-        img{
+        img {
           @include mixins.setDims(auto, 2em);
         }
       }
+    }
+
+    .toasts {
+      @include mixins.setFlexbox {
+        @include mixins.setDims(40vw, 80vh, absolute);
+        bottom:1em;
+        left: 20vw;
+        gap:.2em;
+
+        flex-direction: column-reverse;
+        align-items: center;
+      }
+
+      transition: all .2s ease;
     }
   }
 }

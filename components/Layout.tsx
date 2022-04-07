@@ -1,6 +1,8 @@
-import type { NextPage } from 'next'
-import { CSSProperties, useState } from 'react';
+import { CSSProperties, useEffect, useState } from 'react';
 import { useAppContext } from '../context/state';
+import { v4 as uuidv4 } from 'uuid';
+import type { NextPage } from 'next'
+import Toast from './toasts/Toast';
 
 import Image from 'next/image';
 import burgerIcon from '../public/burger.svg';
@@ -15,8 +17,11 @@ type Props = {
 }
 
 const Layout: NextPage<Props> = ({ editor, options, type }) => {
-  const ctx = useAppContext();
+  const ctx = useAppContext().State;
+  const { addToast, removeToast, Toasts } = useAppContext();
   const [optionStyle, setStyle] = useState<CSSProperties>({});
+
+
 
   return (
     <div className={styles.app}>
@@ -43,12 +48,38 @@ const Layout: NextPage<Props> = ({ editor, options, type }) => {
         </div>
         {
           type === "view" ?
-            <div className={styles.copy} onClick={() => copyTextToClipboard(ctx.text)}>
+            <div className={styles.copy}
+              onClick={() => {
+
+                addToast({
+                  id: uuidv4(),
+                  type: "info",
+                  message: "bin coppied",
+                  deleteToast: () => {removeToast('aa')} //it is not needed, but i want it xD
+                });
+
+                copyTextToClipboard(ctx.text);
+              }}>
               <Image src={copyIcon} layout="fill" alt="copy" priority={true} />
             </div>
             :
             null
         }
+
+        <div className={styles.toasts}>
+          {
+            Toasts.map((toast) => {
+              return <Toast
+                key={toast.id}
+                id={toast.id}
+                message={toast.message}
+                deleteToast={() => removeToast(toast.id)}
+                type={toast.type}
+              />
+            })
+          }
+        </div>
+
       </div>
     </div>
   )

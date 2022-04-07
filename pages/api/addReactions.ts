@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 
 import connectDB from '../../middleware/mongodb';
 import BinModel from '../../models/bin';
-import { Reaction } from '../../types/Bin';
+import type { Reaction } from '../../types/Bin';
 // import mongoose from 'mongoose'
 
 type Data = {
@@ -69,10 +69,7 @@ async function handler(
   const foundAndIncremented = await BinModel.findOneAndUpdate(filter, update, option).exec();
   const newCount = foundAndIncremented.get('reactions').find((el: Reaction) => el._id.toString() === _id).number;
 
-  if (foundAndIncremented)
-    res.status(200).json({ isSaved: true, action, newCount });
-  else
-    res.status(200).json({ isSaved: false, action, newCount });
+  res.status(200).json({ isSaved: (foundAndIncremented ? true : false), action, newCount });
 
 }
 

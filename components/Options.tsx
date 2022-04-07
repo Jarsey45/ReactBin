@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Router from 'next/router';
+import { v4 as uuidv4 } from 'uuid';
 
 import styles from '../styles/_options.module.scss';
 import logo from '../public/logo.png';
@@ -14,10 +15,19 @@ type OptionsProps = {
   reactions?: Reaction[]
 }
 
+console.log('hej')
+
 const Options: React.FC<OptionsProps> = ({ type, reactions }) => {
-  const ctx = useAppContext();
+  const ctx = useAppContext().State;
+  const { addToast, removeToast } = useAppContext();
 
   const saveBin = async () => {
+    addToast({
+      id: uuidv4(),
+      type: "info",
+      message: "Creating new bin...",
+      deleteToast: () => { removeToast('aa') } //it is not needed, but i want it xD
+    });
 
     try {
       const response = await fetch('/api/addBin', {
@@ -55,7 +65,8 @@ const Options: React.FC<OptionsProps> = ({ type, reactions }) => {
     Router.prefetch("/readme");
 
     if (type === "view")
-      Router.prefetch(`/edit/${ctx.id}`)
+      Router.prefetch(`/edit/${ctx.id}`);
+
   }, [ctx.id, type])
 
   return (

@@ -18,7 +18,7 @@ type BinProps = {
 }
 
 const Bin: NextPage<BinProps> = ({ text, lang, id, reactions }) => {
-  const ctx = useAppContext();
+  const ctx = useAppContext().State;
 
   ctx.id = id;
   ctx.lang = lang;

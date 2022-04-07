@@ -28,7 +28,7 @@ const Number: React.FC<NumberProps> = ({ index }) => {
 }
 
 const Editor: NextPage<EditorProps> = ({ content, editText }) => {
-  const ctx = useAppContext();
+  const ctx = useAppContext().State;
   const [lines, setLines] = useState<number>(1);
   const textArea = useRef<HTMLTextAreaElement | HTMLPreElement | null>(null);
   const linesArea = useRef<HTMLDivElement | null>(null);

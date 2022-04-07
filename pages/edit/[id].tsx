@@ -16,7 +16,7 @@ type BinEditProps = {
 }
 
 const BinEdit: NextPage<BinEditProps> = ({ text, lang, id }) => {
-  const ctx = useAppContext();
+  const ctx = useAppContext().State;
 
   ctx.id = id;
   ctx.lang = lang;
