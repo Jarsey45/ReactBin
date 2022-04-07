@@ -1,53 +1,69 @@
 @use './abstracts/mixins';
 @use './abstracts/vars';
 
-.logo{
+.logo {
   flex: 1;
   padding: 0 20% 0 20%;
 
-  @include mixins.setFlexbox{
+  @include mixins.setFlexbox {
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-  
+
 }
 
-.settings{
-  @include mixins.setFlexbox{
+.settings {
+  @include mixins.setFlexbox {
     flex-direction: column;
   }
+
   flex:2;
-  
-  .button{
-    @include mixins.setFlexbox{
+
+  .button {
+    @include mixins.setFlexbox {
       justify-content: center;
       align-items: center;
     }
+
     flex: 1;
 
     text-align: center;
     font-size: 2em;
     color: vars.$triary;
     border-radius: 5px 0px 0 5px;
-    
+
     cursor: pointer;
 
     transition: all .2s ease-in-out;
 
-    &:hover{
+    &:hover {
 
       background-color: vars.$triary;
       color: vars.$secondary;
     }
+
+    //disable select 
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
   }
 }
 
-.reactions{
+.reactions {
   position: relative;
-  flex:3;
+  flex: 3;
   padding: .5em;
   text-align: center;
-  color:vars.$white-text-color;
+  color: vars.$white-text-color;
 
 }

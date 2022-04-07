@@ -122,7 +122,7 @@ $optionBarWidth: 230px;
 
         @include mixins.for-phone-only {
           @include mixins.setDims(50vw, 80vh, absolute);
-          left:25%;
+          left: 25%;
         }
       }
 
