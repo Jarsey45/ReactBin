@@ -7,6 +7,8 @@ const useTimer = () => {
     const timeout = setTimeout(()=>{
       setMs(ms + 100);
     },100)
+
+    return () => clearTimeout(timeout);
   })
 
   return ms;
