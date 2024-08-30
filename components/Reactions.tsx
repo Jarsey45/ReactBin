@@ -133,7 +133,14 @@ const Reactions: NextPage<ReactionsProps> = ({ data }) => {
     return (
       <div className={`${styles.option} ${(chosen.status && !selected ? styles.notSelected : '')}`} data-type={emote.name} data-id={emote._id} data-selected={selected} key={index} onClick={handleClick}>
         <div className={styles.icon}>
-          <Image src={src} alt={emote.name} priority={true}/>
+          <Image src={src} 
+            alt={emote.name} 
+            priority={true}
+            style={{
+              height: "100%",
+              width: "100%",
+            }}
+          />
         </div>
         <div className={styles.count} > {emote.number} </div>
       </div>

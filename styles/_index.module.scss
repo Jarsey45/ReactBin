@@ -2,6 +2,7 @@
 @use 'abstracts/vars';
 
 $optionBarWidth: 230px;
+$optionBarMaxWidth: fit-content;
 
 
 .app {
@@ -19,12 +20,6 @@ $optionBarWidth: 230px;
 
     background: vars.$primary;
 
-    // .textEditor{
-    //   // @include mixins.setDims(auto, calc(100% - 36px));
-
-
-    // }
-
     .optionBar {
       @include mixins.setFlexbox {
         flex-direction: column;
@@ -36,13 +31,14 @@ $optionBarWidth: 230px;
 
         border-radius: 18px 0 0 18px;
         right: min(-50vw, 0px - $optionBarWidth);
-        transition: all .5s ease;
+        transition: all .3s ease;
         z-index: 1;
       }
 
 
       flex:1;
       min-width: $optionBarWidth;
+      max-width: $optionBarMaxWidth;
       background:vars.$primary;
     }
 
@@ -78,7 +74,7 @@ $optionBarWidth: 230px;
       z-index: 0;
       box-sizing: content-box;
       bottom: 2.4em;
-      right: calc($optionBarWidth + 5vw);
+      right: 20%;
       border-radius: 5px;
       border: 2px solid vars.$primary;
       cursor: pointer;

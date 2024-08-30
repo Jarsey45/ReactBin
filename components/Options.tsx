@@ -95,7 +95,14 @@ const Options: React.FC<OptionsProps> = ({ type, reactions }) => {
   return (
     <>
       <div className={styles.logo} >
-        <Image src={logo} alt="ReactBin logo" priority={true} />
+        <Image src={logo} 
+          alt="ReactBin logo" 
+          priority={true}
+          style={{
+            height: "auto",
+            width: "100%",
+          }} 
+        />
       </div>
       <div className={styles.settings}>
         {

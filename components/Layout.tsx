@@ -1,6 +1,5 @@
-import { CSSProperties, useEffect, useState } from 'react';
+import { CSSProperties, useState } from 'react';
 import { useAppContext } from '../context/state';
-import { v4 as uuidv4 } from 'uuid';
 import type { NextPage } from 'next'
 import Toast from './toasts/Toast';
 

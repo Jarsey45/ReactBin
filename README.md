@@ -25,11 +25,11 @@ App is inspired by [hastebin](hastebin.com) and [pastebin](https://pastebin.com)
 ## 👏 Credits
 
 #### [autosize](https://github.com/edloidas/autoresize#readme) by *edloidas* 
-#### [highlight.js](https://github.com/edloidas/autoresize#readme) by [*Contributors*](https://github.com/highlightjs/highlight.js/blob/main/CONTRIBUTORS.md)
+#### [highlight.js](https://github.com/highlightjs/highlight.js) by [*Contributors*](https://github.com/highlightjs/highlight.js/blob/main/CONTRIBUTORS.md)
 #### [mongoose](https://mongoosejs.com) by *Automattic*
 #### [uuid](https://github.com/uuidjs/uuid#readme)
 #### [Next.js](https://nextjs.org)
 #### [Typescript](typescriptlang.org)
 
 ---
-### *Bartłomiej Kowalczyk 2021*
+### *Bartłomiej Kowalczyk since 2021*
